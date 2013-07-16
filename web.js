@@ -2,6 +2,7 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
+var fs = require('fs');
 var buf = null;
 try {
     buf = fs.readFileSync('index.html');
@@ -9,7 +10,7 @@ try {
 }
 
 app.get('/', function(request, response) {
-  response.send(buf);
+  response.send(buf.toString());
 });
 
 var port = process.env.PORT || 5000;
